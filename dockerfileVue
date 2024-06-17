@@ -1,0 +1,15 @@
+FROM node:16
+
+WORKDIR /app
+
+COPY vue-app/package.json vue-app/yarn.lock ./
+
+RUN yarn install
+
+COPY vue-app .
+
+RUN yarn build
+
+CMD ["yarn", "serve"]
+
+EXPOSE 5000
